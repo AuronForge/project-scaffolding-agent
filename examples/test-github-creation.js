@@ -32,7 +32,7 @@ const githubProject = {
   isPrivate: false, // Set to true to create a private repository
   // GitHub configuration
   repositoryUrl: 'https://github.com/Eduk29/test-angular-github',
-  githubToken: process.env.GITHUB_TOKEN || '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'
+  githubToken: process.env.GITHUB_TOKEN
 };
 
 async function testGitHubCreation() {

@@ -12,13 +12,21 @@ import {
 export class AIService {
   constructor(provider = 'github') {
     this.provider = provider;
-    this.initializeClient();
+    this._client = null;
+    this.model = null;
+  }
+
+  get client() {
+    if (!this._client) {
+      this.initializeClient();
+    }
+    return this._client;
   }
 
   initializeClient() {
     switch (this.provider) {
       case 'github':
-        this.client = new OpenAI({
+        this._client = new OpenAI({
           baseURL: 'https://models.inference.ai.azure.com',
           apiKey: process.env.GITHUB_TOKEN,
         });
@@ -26,14 +34,14 @@ export class AIService {
         break;
 
       case 'openai':
-        this.client = new OpenAI({
+        this._client = new OpenAI({
           apiKey: process.env.OPENAI_API_KEY,
         });
         this.model = process.env.OPENAI_MODEL || 'gpt-4o';
         break;
 
       case 'anthropic':
-        this.client = new Anthropic({
+        this._client = new Anthropic({
           apiKey: process.env.ANTHROPIC_API_KEY,
         });
         this.model = process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-20241022';

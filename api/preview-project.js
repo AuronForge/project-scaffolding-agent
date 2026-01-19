@@ -1,4 +1,6 @@
-import { ProjectScaffoldingAgent } from '../agents/scaffolding-agent.js';
+import { ProjectController } from '../src/controllers/project.controller.js';
+
+const projectController = new ProjectController();
 
 /**
  * API Handler for previewing project structure
@@ -23,28 +25,6 @@ export default async function handler(req, res) {
     });
   }
 
-  try {
-    const projectInput = req.body;
-
-    // Get AI provider from header or use default
-    const provider = req.headers['x-ai-provider'] || 'github';
-
-    console.log(`🔍 Previewing project: ${projectInput.projectName}`);
-
-    // Create agent and preview project
-    const agent = new ProjectScaffoldingAgent(provider);
-    const result = await agent.previewProject(projectInput);
-
-    if (result.success) {
-      return res.status(200).json(result);
-    } else {
-      return res.status(400).json(result);
-    }
-  } catch (error) {
-    console.error('💥 Unexpected error:', error);
-    return res.status(500).json({
-      success: false,
-      error: error.message,
-    });
-  }
+  // Use controller
+  return projectController.previewProject(req, res);
 }
