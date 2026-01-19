@@ -1,8 +1,8 @@
 /**
  * Vercel Serverless Function for health check
- * Endpoint: GET /api/health
+ * Endpoint: GET /api/v1/health
  */
-import { ProjectController } from '../src/controllers/project.controller.js';
+import { ProjectController } from '../../src/controllers/project.controller.js';
 
 const projectController = new ProjectController();
 

@@ -1,8 +1,8 @@
 /**
  * Vercel Serverless Function for getting templates
- * Endpoint: GET /api/templates
+ * Endpoint: GET /api/v1/templates
  */
-import { ProjectController } from '../src/controllers/project.controller.js';
+import { ProjectController } from '../../src/controllers/project.controller.js';
 
 const projectController = new ProjectController();
 
