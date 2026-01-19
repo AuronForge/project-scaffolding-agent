@@ -262,4 +262,50 @@ npx --no -- commitlint --edit $1
 
     return configs;
   }
+
+  /**
+   * List all available templates
+   * @returns {Array} List of available templates
+   */
+  listAvailableTemplates() {
+    return [
+      {
+        technology: 'Angular',
+        version: '18',
+        type: 'Frontend',
+        description: 'Angular frontend application with TypeScript',
+        features: ['TypeScript', 'Routing', 'Forms', 'HTTP Client', 'Testing'],
+      },
+      {
+        technology: 'React',
+        version: '18',
+        type: 'Frontend',
+        description: 'React frontend application (Coming soon)',
+        features: ['JSX', 'Hooks', 'Context API', 'React Router'],
+        available: false,
+      },
+      {
+        technology: 'Vue',
+        version: '3',
+        type: 'Frontend',
+        description: 'Vue.js frontend application (Coming soon)',
+        features: ['Composition API', 'Vue Router', 'Pinia'],
+        available: false,
+      },
+    ];
+  }
+
+  /**
+   * Get specific template information
+   * @param {string} technology - Technology name
+   * @param {string} version - Version
+   * @returns {Object|null} Template information or null
+   */
+  getTemplate(technology, version) {
+    const templates = this.listAvailableTemplates();
+    return templates.find(t => 
+      t.technology === technology && 
+      t.version === version
+    ) || null;
+  }
 }

@@ -59,28 +59,18 @@ export class ProjectController {
     try {
       const projectInput = req.body;
 
-      // Validate input (relaxed validation for preview)
-      const previewSchema = projectInputSchema.omit({ 
-        repositoryUrl: true, 
-        githubToken: true,
-        localPath: true 
-      });
-      
-      const validation = previewSchema.safeParse(projectInput);
-      
-      if (!validation.success) {
+      // For preview, we don't require GitHub or local path
+      // Just validate basic fields
+      if (!projectInput.projectName || !projectInput.front || 
+          !projectInput.technology || !projectInput.version) {
         return res.status(400).json({
           success: false,
-          error: 'Validation failed',
-          details: validation.error.errors.map(err => ({
-            field: err.path.join('.'),
-            message: err.message,
-          })),
+          error: 'Missing required fields: projectName, front, technology, version',
         });
       }
 
       // Generate preview
-      const result = await this.projectService.previewProject(validation.data);
+      const result = await this.projectService.previewProject(projectInput);
 
       return res.status(200).json({
         success: true,
