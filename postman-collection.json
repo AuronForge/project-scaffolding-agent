@@ -1,0 +1,454 @@
+{
+  "info": {
+    "name": "Project Scaffolding Agent API",
+    "description": "AI-powered agent that generates production-ready project structures and publishes them to GitHub or creates locally",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "project-scaffolding-agent-api",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3002",
+      "type": "string"
+    },
+    {
+      "key": "githubToken",
+      "value": "ghp_YOUR_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "githubUsername",
+      "value": "YOUR_USERNAME",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Info",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            },
+            "description": "Check if the API is healthy and running"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Available Templates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/templates",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "templates"]
+            },
+            "description": "List all available project templates"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Preview",
+      "item": [
+        {
+          "name": "Preview Simple Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-simple-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/preview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "preview"]
+            },
+            "description": "Preview project structure without creating it"
+          },
+          "response": []
+        },
+        {
+          "name": "Preview with Dependencies",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-express-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\"],\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/preview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "preview"]
+            },
+            "description": "Preview project with all optional features"
+          },
+          "response": []
+        },
+        {
+          "name": "Preview Angular Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-angular-app\",\n  \"front\": \"Frontend\",\n  \"technology\": \"Angular\",\n  \"version\": \"18\",\n  \"dependencies\": [\"Prettier\", \"ESLint\", \"Husky\"],\n  \"includeTests\": true,\n  \"includeCICD\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/preview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "preview"]
+            },
+            "description": "Preview Angular frontend project"
+          },
+          "response": []
+        },
+        {
+          "name": "Preview Spring Boot API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-spring-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Spring Boot\",\n  \"version\": \"3.2\",\n  \"dependencies\": [\"Spring Web\", \"Spring Data JPA\", \"PostgreSQL\"],\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/preview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "preview"]
+            },
+            "description": "Preview Spring Boot backend project"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Create Project - Local",
+      "item": [
+        {
+          "name": "Create Local Node.js Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-local-nodejs-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\"],\n  \"localPath\": \"C:/temp/projects\",\n  \"description\": \"My local Node.js API\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create a project in a local directory"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Local Angular Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-local-angular-app\",\n  \"front\": \"Frontend\",\n  \"technology\": \"Angular\",\n  \"version\": \"18\",\n  \"dependencies\": [\"Prettier\", \"ESLint\", \"Husky\"],\n  \"localPath\": \"C:/temp/projects\",\n  \"description\": \"My local Angular app\",\n  \"includeTests\": true,\n  \"includeCICD\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create Angular project locally"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Create Project - GitHub",
+      "item": [
+        {
+          "name": "Create Public GitHub Repository",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-public-nodejs-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-public-nodejs-api\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"My public Node.js API\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create a public GitHub repository"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Private GitHub Repository",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-private-nodejs-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\", \"ESLint\", \"Prettier\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-private-nodejs-api\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": true,\n  \"description\": \"My private Node.js API (confidential)\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create a private GitHub repository"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Public Angular on GitHub",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-angular-app\",\n  \"front\": \"Frontend\",\n  \"technology\": \"Angular\",\n  \"version\": \"18\",\n  \"dependencies\": [\"Prettier\", \"ESLint\", \"Husky\", \"Commitlint\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-angular-app\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"My Angular frontend application\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create public Angular project on GitHub"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Spring Boot API on GitHub",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-spring-boot-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Spring Boot\",\n  \"version\": \"3.2\",\n  \"dependencies\": [\"Spring Web\", \"Spring Data JPA\", \"PostgreSQL\", \"Spring Security\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-spring-boot-api\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"Spring Boot REST API with JPA and PostgreSQL\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create Spring Boot project on GitHub"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Fullstack React+Node on GitHub",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"my-fullstack-app\",\n  \"front\": \"Fullstack\",\n  \"technology\": \"React\",\n  \"version\": \"18\",\n  \"dependencies\": [\"React Router\", \"Axios\", \"Express\", \"Prisma\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-fullstack-app\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"Fullstack application with React and Node.js\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Create fullstack React + Node.js project"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Invalid - Missing Required Fields",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/preview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "preview"]
+            },
+            "description": "Test validation - should return 400 error"
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid - Wrong Project Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"test-project\",\n  \"front\": \"InvalidType\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"localPath\": \"C:/temp\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Test validation - invalid front type"
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid - Missing GitHub Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"test-project\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"repositoryUrl\": \"https://github.com/user/test-project\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            },
+            "description": "Test validation - missing GitHub token"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Legacy Endpoints (Backward Compatibility)",
+      "item": [
+        {
+          "name": "Create Project (Legacy)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"legacy-test\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"localPath\": \"C:/temp/projects\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/create-project",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "create-project"]
+            },
+            "description": "Legacy endpoint - still supported for backward compatibility"
+          },
+          "response": []
+        },
+        {
+          "name": "Preview Project (Legacy)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"legacy-preview\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/preview-project",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "preview-project"]
+            },
+            "description": "Legacy preview endpoint"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
