@@ -5,8 +5,10 @@
   "main": "api/create-project.js",
   "type": "module",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "dev:vercel": "vercel dev --listen 3002",
     "commit": "cz",
-    "dev": "vercel dev --listen 3002",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,json,md}\"",
     "lint": "eslint src/ api/ tests/",
@@ -46,6 +48,7 @@
     "@anthropic-ai/sdk": "^0.32.1",
     "@octokit/rest": "^21.0.2",
     "dotenv": "^16.4.7",
+    "express": "^5.2.1",
     "openai": "^4.77.3",
     "zod": "^3.24.1"
   },
