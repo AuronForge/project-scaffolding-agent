@@ -2,7 +2,7 @@
   "name": "project-scaffolding-agent",
   "version": "1.0.0",
   "description": "AI Agent that generates and publishes complete project structures to GitHub",
-  "main": "api/create-project.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
