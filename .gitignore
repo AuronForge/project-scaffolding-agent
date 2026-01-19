@@ -13,3 +13,4 @@ temp/
 # Test output directories
 examples/output/*
 !examples/output/.gitkeep
+.vercel

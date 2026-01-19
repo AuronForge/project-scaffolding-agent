@@ -33,9 +33,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/health",
+              "raw": "{{baseUrl}}/api/v1/health",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "health"]
+              "path": ["api", "v1", "health"]
             },
             "description": "Check if the API is healthy and running"
           },
@@ -47,9 +47,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/projects/templates",
+              "raw": "{{baseUrl}}/api/v1/projects/templates",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "templates"]
+              "path": ["api", "v1", "projects", "templates"]
             },
             "description": "List all available project templates"
           },
@@ -75,9 +75,9 @@
               "raw": "{\n  \"projectName\": \"my-simple-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects/preview",
+              "raw": "{{baseUrl}}/api/v1/projects/preview",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "preview"]
+              "path": ["api", "v1", "projects", "preview"]
             },
             "description": "Preview project structure without creating it"
           },
@@ -98,9 +98,9 @@
               "raw": "{\n  \"projectName\": \"my-express-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\"],\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects/preview",
+              "raw": "{{baseUrl}}/api/v1/projects/preview",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "preview"]
+              "path": ["api", "v1", "projects", "preview"]
             },
             "description": "Preview project with all optional features"
           },
@@ -121,9 +121,9 @@
               "raw": "{\n  \"projectName\": \"my-angular-app\",\n  \"front\": \"Frontend\",\n  \"technology\": \"Angular\",\n  \"version\": \"18\",\n  \"dependencies\": [\"Prettier\", \"ESLint\", \"Husky\"],\n  \"includeTests\": true,\n  \"includeCICD\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects/preview",
+              "raw": "{{baseUrl}}/api/v1/projects/preview",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "preview"]
+              "path": ["api", "v1", "projects", "preview"]
             },
             "description": "Preview Angular frontend project"
           },
@@ -144,9 +144,9 @@
               "raw": "{\n  \"projectName\": \"my-spring-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Spring Boot\",\n  \"version\": \"3.2\",\n  \"dependencies\": [\"Spring Web\", \"Spring Data JPA\", \"PostgreSQL\"],\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects/preview",
+              "raw": "{{baseUrl}}/api/v1/projects/preview",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "preview"]
+              "path": ["api", "v1", "projects", "preview"]
             },
             "description": "Preview Spring Boot backend project"
           },
@@ -172,9 +172,9 @@
               "raw": "{\n  \"projectName\": \"my-local-nodejs-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\"],\n  \"localPath\": \"C:/temp/projects\",\n  \"description\": \"My local Node.js API\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create a project in a local directory"
           },
@@ -195,9 +195,9 @@
               "raw": "{\n  \"projectName\": \"my-local-angular-app\",\n  \"front\": \"Frontend\",\n  \"technology\": \"Angular\",\n  \"version\": \"18\",\n  \"dependencies\": [\"Prettier\", \"ESLint\", \"Husky\"],\n  \"localPath\": \"C:/temp/projects\",\n  \"description\": \"My local Angular app\",\n  \"includeTests\": true,\n  \"includeCICD\": false\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create Angular project locally"
           },
@@ -223,9 +223,9 @@
               "raw": "{\n  \"projectName\": \"my-public-nodejs-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-public-nodejs-api\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"My public Node.js API\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create a public GitHub repository"
           },
@@ -246,9 +246,9 @@
               "raw": "{\n  \"projectName\": \"my-private-nodejs-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"dependencies\": [\"Express\", \"Prisma\", \"Jest\", \"ESLint\", \"Prettier\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-private-nodejs-api\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": true,\n  \"description\": \"My private Node.js API (confidential)\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create a private GitHub repository"
           },
@@ -269,9 +269,9 @@
               "raw": "{\n  \"projectName\": \"my-angular-app\",\n  \"front\": \"Frontend\",\n  \"technology\": \"Angular\",\n  \"version\": \"18\",\n  \"dependencies\": [\"Prettier\", \"ESLint\", \"Husky\", \"Commitlint\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-angular-app\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"My Angular frontend application\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": false\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create public Angular project on GitHub"
           },
@@ -292,9 +292,9 @@
               "raw": "{\n  \"projectName\": \"my-spring-boot-api\",\n  \"front\": \"Backend\",\n  \"technology\": \"Spring Boot\",\n  \"version\": \"3.2\",\n  \"dependencies\": [\"Spring Web\", \"Spring Data JPA\", \"PostgreSQL\", \"Spring Security\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-spring-boot-api\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"Spring Boot REST API with JPA and PostgreSQL\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create Spring Boot project on GitHub"
           },
@@ -315,9 +315,9 @@
               "raw": "{\n  \"projectName\": \"my-fullstack-app\",\n  \"front\": \"Fullstack\",\n  \"technology\": \"React\",\n  \"version\": \"18\",\n  \"dependencies\": [\"React Router\", \"Axios\", \"Express\", \"Prisma\"],\n  \"repositoryUrl\": \"https://github.com/{{githubUsername}}/my-fullstack-app\",\n  \"githubToken\": \"{{githubToken}}\",\n  \"isPrivate\": false,\n  \"description\": \"Fullstack application with React and Node.js\",\n  \"includeTests\": true,\n  \"includeCICD\": true,\n  \"includeDocker\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Create fullstack React + Node.js project"
           },
@@ -343,9 +343,9 @@
               "raw": "{\n  \"projectName\": \"test\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects/preview",
+              "raw": "{{baseUrl}}/api/v1/projects/preview",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "preview"]
+              "path": ["api", "v1", "projects", "preview"]
             },
             "description": "Test validation - should return 400 error"
           },
@@ -366,9 +366,9 @@
               "raw": "{\n  \"projectName\": \"test-project\",\n  \"front\": \"InvalidType\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"localPath\": \"C:/temp\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Test validation - invalid front type"
           },
@@ -389,9 +389,9 @@
               "raw": "{\n  \"projectName\": \"test-project\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"repositoryUrl\": \"https://github.com/user/test-project\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/projects",
+              "raw": "{{baseUrl}}/api/v1/projects",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
+              "path": ["api", "v1", "projects"]
             },
             "description": "Test validation - missing GitHub token"
           },
@@ -417,9 +417,9 @@
               "raw": "{\n  \"projectName\": \"legacy-test\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\",\n  \"localPath\": \"C:/temp/projects\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/create-project",
+              "raw": "{{baseUrl}}/api/v1/create-project",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "create-project"]
+              "path": ["api", "v1", "create-project"]
             },
             "description": "Legacy endpoint - still supported for backward compatibility"
           },
@@ -440,9 +440,9 @@
               "raw": "{\n  \"projectName\": \"legacy-preview\",\n  \"front\": \"Backend\",\n  \"technology\": \"Node.js\",\n  \"version\": \"20\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/preview-project",
+              "raw": "{{baseUrl}}/api/v1/preview-project",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "preview-project"]
+              "path": ["api", "v1", "preview-project"]
             },
             "description": "Legacy preview endpoint"
           },

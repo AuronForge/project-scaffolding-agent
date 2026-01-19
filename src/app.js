@@ -3,6 +3,8 @@
  * Main application configuration with middleware and routes
  */
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from '../swagger.js';
 import { setupRoutes } from './routes/index.js';
 import { errorHandler, notFoundHandler } from './middlewares/error.middleware.js';
 import { requestLogger } from './middlewares/logger.middleware.js';
@@ -30,6 +32,16 @@ export function createApp() {
     }
     
     next();
+  });
+
+  // Swagger documentation
+  app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    explorer: true,
+    customSiteTitle: 'Project Scaffolding Agent API',
+    customCss: '.swagger-ui .topbar { display: none }',
+  }));
+  app.get('/api/v1/swagger.json', (_req, res) => {
+    res.json(swaggerSpec);
   });
 
   // Setup routes
