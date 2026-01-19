@@ -286,6 +286,153 @@ const options = {
         },
       },
     },
+    paths: {
+      '/health': {
+        get: {
+          tags: ['Health'],
+          summary: 'Health check',
+          description: 'Check if the API is healthy and running',
+          responses: {
+            '200': {
+              description: 'API is healthy',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      success: { type: 'boolean', example: true },
+                      status: { type: 'string', example: 'healthy' },
+                      timestamp: { type: 'string', format: 'date-time' },
+                      version: { type: 'string', example: '1.0.0' },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      '/projects': {
+        post: {
+          tags: ['Projects'],
+          summary: 'Create a new project',
+          description: 'Create a project locally or on GitHub with AI-generated or template-based structure',
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ProjectInput' },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Project created successfully',
+              content: {
+                'application/json': {
+                  schema: { $ref: '#/components/schemas/SuccessResponse' },
+                },
+              },
+            },
+            '400': {
+              description: 'Invalid input',
+              content: {
+                'application/json': {
+                  schema: { $ref: '#/components/schemas/ErrorResponse' },
+                },
+              },
+            },
+          },
+        },
+      },
+      '/projects/preview': {
+        post: {
+          tags: ['Projects'],
+          summary: 'Preview project structure',
+          description: 'Generate a preview of the project structure without creating it',
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  required: ['projectName', 'front', 'technology', 'version'],
+                  properties: {
+                    projectName: { type: 'string', example: 'my-api' },
+                    front: {
+                      type: 'string',
+                      enum: ['Frontend', 'Backend', 'Fullstack'],
+                      example: 'Backend',
+                    },
+                    technology: { type: 'string', example: 'Node.js' },
+                    version: { type: 'string', example: '20' },
+                    dependencies: {
+                      type: 'array',
+                      items: { type: 'string' },
+                      example: ['Express', 'Prisma'],
+                    },
+                  },
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Preview generated successfully',
+              content: {
+                'application/json': {
+                  schema: {
+                    allOf: [
+                      { $ref: '#/components/schemas/SuccessResponse' },
+                      {
+                        type: 'object',
+                        properties: {
+                          data: { $ref: '#/components/schemas/ProjectPreview' },
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            },
+            '400': {
+              description: 'Invalid input',
+              content: {
+                'application/json': {
+                  schema: { $ref: '#/components/schemas/ErrorResponse' },
+                },
+              },
+            },
+          },
+        },
+      },
+      '/projects/templates': {
+        get: {
+          tags: ['Templates'],
+          summary: 'List available templates',
+          description: 'Get a list of all available project templates',
+          responses: {
+            '200': {
+              description: 'List of templates',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      success: { type: 'boolean', example: true },
+                      data: {
+                        type: 'array',
+                        items: { $ref: '#/components/schemas/Template' },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   apis: ['./api/*.js', './src/**/*.js'],
 };
