@@ -2,7 +2,7 @@
  * Error handling middleware
  */
 
-export const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res, _next) => {
   console.error('Error occurred:', err);
 
   // Default error response

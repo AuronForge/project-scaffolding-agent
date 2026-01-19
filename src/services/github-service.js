@@ -79,7 +79,7 @@ export class GitHubService {
           ref: branch,
         });
         sha = data.sha;
-      } catch (error) {
+      } catch (_error) {
         // File doesn't exist, will create
         sha = undefined;
       }
@@ -116,7 +116,7 @@ export class GitHubService {
           repo,
           ref: `heads/${branch}`,
         });
-      } catch (error) {
+      } catch (_error) {
         // Repository is empty, first commit
         isEmpty = true;
         console.log('📝 Creating initial commit (empty repository)');
