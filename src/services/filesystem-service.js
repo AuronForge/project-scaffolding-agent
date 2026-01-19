@@ -86,7 +86,7 @@ export class FileSystemService {
       try {
         await fs.access(resolvedPath, fs.constants.W_OK);
         return { exists: true, writable: true };
-      } catch (error) {
+      } catch (_error) {
         return { exists: true, writable: false, error: 'Directory is not writable' };
       }
     } catch (error) {

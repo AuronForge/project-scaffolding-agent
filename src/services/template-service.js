@@ -98,7 +98,7 @@ export class TemplateService {
    * Generate additional tool configurations using AI
    * This is where AI is still useful - for configs of Prettier, ESLint, etc.
    */
-  async generateToolConfigurations(dependencies, aiService) {
+  async generateToolConfigurations(dependencies, _aiService) {
     const configs = [];
 
     if (dependencies.includes('Prettier')) {

@@ -31,7 +31,6 @@ export class ProjectScaffoldingAgent {
 
       // Determine creation mode
       const isGitHubMode = validatedInput.repositoryUrl && validatedInput.githubToken;
-      const isLocalMode = validatedInput.localPath;
 
       console.log(`📍 Mode: ${isGitHubMode ? 'GitHub' : 'Local'}`);
 
@@ -331,7 +330,7 @@ Files Created: ${projectStructure.files.length}`,
       try {
         const packageJson = JSON.parse(packageJsonFile.content);
         return packageJson.scripts || {};
-      } catch (error) {
+      } catch (_error) {
         console.warn('Could not parse package.json from template');
         return {};
       }
