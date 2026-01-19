@@ -1,0 +1,5 @@
+# Output directory for local test projects
+
+This directory is used by `test-local-creation.js` to store generated projects.
+
+Files in this directory are ignored by git (see .gitignore).

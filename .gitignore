@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.vercel/
+coverage/
+*.log
+.DS_Store
+dist/
+build/
+.cache/
+temp/
+
+# Test output directories
+examples/output/*
+!examples/output/.gitkeep

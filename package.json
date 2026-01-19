@@ -1,0 +1,65 @@
+{
+  "name": "project-scaffolding-agent",
+  "version": "1.0.0",
+  "description": "AI Agent that generates and publishes complete project structures to GitHub",
+  "main": "api/create-project.js",
+  "type": "module",
+  "scripts": {
+    "commit": "cz",
+    "dev": "vercel dev --listen 3002",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,json,md}\"",
+    "lint": "eslint src/ api/ tests/",
+    "lint:fix": "eslint src/ api/ tests/ --fix",
+    "prepare": "husky",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:local": "node examples/test-local-creation.js",
+    "test:preview": "node examples/test-dependency-analysis.js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "scaffolding",
+    "github",
+    "automation",
+    "project-generator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@octokit/rest": "^21.0.2",
+    "dotenv": "^16.4.7",
+    "openai": "^4.77.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.0",
+    "@commitlint/config-conventional": "^19.7.0",
+    "@jest/globals": "^29.7.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.18.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
+    "standard-version": "^9.5.0"
+  }
+}
